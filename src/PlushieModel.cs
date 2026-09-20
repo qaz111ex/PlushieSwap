@@ -1134,9 +1134,10 @@ namespace PlushieSwap
             // The inverted-hull outline lives on its own child so it can use a flat ink
             // material with front faces culled. It casts no shadow of its own.
             //
-            // Its vertices are rewritten every frame to keep the line a constant number of
-            // pixels wide, so it cannot share the cached mesh with the other plushies: each
-            // instance gets its own copy.
+            // Its vertices are extruded once, in the model's own space, so the line is part
+            // of the plush and scales with it (see PlushieOutline). The extrusion depends on
+            // the width setting, which can change at runtime, so each instance keeps its own
+            // copy of the mesh rather than sharing the cached one.
             //
             // The width is checked BEFORE anything is created. A width of 0 is documented
             // to hide the outline; creating the object anyway would leave it rendering at
@@ -1168,11 +1169,12 @@ namespace PlushieSwap
                     outlineRenderer.allowOcclusionWhenDynamic = false;
                     outlineRenderer.lightProbeUsage = LightProbeUsage.Off;
 
-                    // Screen-space width. The shell was baked with a fixed world push; the
-                    // driver undoes that and re-extrudes in pixels, which is what removes the
-                    // thickness swings with distance and with how edge-on a vertex is.
+                    // Model-space thickness. The shell was baked with a fixed push; the
+                    // driver recovers the body surface from it and re-applies the push for
+                    // the configured width, so the line stays proportional to the plush at
+                    // every distance instead of holding a fixed pixel width.
                     PlushieOutline driver = PlushieOutline.Attach(
-                        outlineObject, outlineMesh, outlineRenderer,
+                        outlineObject, outlineMesh,
                         asset.BakedOutlineThickness, asset.OutlineWidths,
                         Plugin.OutlineWidthPixels);
                     if (driver == null)
@@ -1184,14 +1186,14 @@ namespace PlushieSwap
                         DiagnosticLog.Warn("Outline driver SKIPPED; outline object removed "
                                               + "(baked " + asset.BakedOutlineThickness.ToString("F6")
                                               + ", width " + Plugin.OutlineWidthPixels.ToString("F2")
-                                              + " px)");
+                                              + ")");
                     }
                     else
                     {
                         DiagnosticLog.Diag("Outline driver attached (baked "
                                            + asset.BakedOutlineThickness.ToString("F6")
                                            + ", width " + Plugin.OutlineWidthPixels.ToString("F2")
-                                           + " px, " + outlineMesh.vertexCount + " verts, "
+                                           + ", " + outlineMesh.vertexCount + " verts, "
                                            + (asset.OutlineWidths != null
                                               ? asset.OutlineWidths.Length + " widths"
                                               : "uniform") + ")");

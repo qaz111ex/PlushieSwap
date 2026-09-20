@@ -65,8 +65,8 @@ any time.
 
 - Three forms, cycled in game with **F7**: `Vanilla` -> `Miffy` -> `ZichaoXiong`
   (the default is Zichao Xiong).
-- The plush keeps its **screen-space constant-width ink outline**, drawn from the
-  model itself, so the line stays crisp at any distance.
+- The plush keeps its **hand-drawn ink outline**, drawn from the model itself. The line is
+  part of the model, so it scales with the plush and stays proportionate at any distance.
 - Name and inventory icon follow the chosen plush.
 - The model inherits the game's own squeeze animation when you hold primary fire.
 - Models, baked shading and icons are embedded in the DLL: one file, no loose assets.
@@ -84,7 +84,7 @@ any time.
 | `Hold Height Offset` | `0.0` | Extra up/down nudge while held |
 | `Rename Item` | `true` | Rename the item to match the chosen plush |
 | `Replace Icon` | `true` | Replace the inventory icon |
-| `Outline Width (pixels)` | `5.0` | Ink line width in screen pixels; `0` hides it |
+| `Outline Width` | `5.0` | Ink line width as a multiple of the baked width; `0` hides it |
 | `Shader Override` | *(empty)* | Only needed if the model renders with wrong colours (needs a restart) |
 | `Verbose Logging` | `false` | Write detailed diagnostics to the BepInEx log |
 

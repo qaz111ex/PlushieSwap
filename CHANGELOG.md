@@ -1,5 +1,31 @@
 # Changelog
 
+## 1.1.1
+
+### Fixed
+
+- **The ink outline no longer looks too thick on a distant plush.** The line was held at a
+  fixed number of screen pixels at every distance, so a plush across the room — far smaller
+  on screen — wore exactly the same 5-pixel line as one in your hands, and read as a heavy
+  black border instead of an outline. The line is now part of the model: it is extruded once
+  in the plush's own space, so it scales with the plush (and with `World Scale`) and gets
+  proportionally thinner with distance, the way a drawn line should.
+
+### Changed
+
+- **A pile of plushies no longer costs frames.** The outline shell was rebuilt on the CPU
+  every frame for every instance — about 15k vertices each, plus a fresh vertex-buffer
+  upload each frame — so a dozen plushies in view meant tens of thousands of vertex
+  transforms per frame. That work is gone completely: the shell is extruded once when the
+  model is built, and re-extruded only when the outline width changes. Nothing in the outline
+  runs per frame now, and the line at normal holding distance is the same as before.
+- `Outline Width (pixels)` is now `Outline Width`. It is a multiple of the width the models
+  are baked with (0.75% of the plush's height) rather than a pixel count, because the line
+  scales with the plush. An existing value is carried over, and the default of `5` is the
+  baked width, so the look at normal holding distance does not change.
+- A width of `0` now switches the outline object off instead of collapsing the shell onto the
+  body, which removes the depth fight between two coincident surfaces.
+
 ## 1.1.0
 
 ### Fixed

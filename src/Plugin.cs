@@ -31,7 +31,7 @@ namespace PlushieSwap
         /// reads this constant and refuses to package when the csproj disagrees with it,
         /// which is what stops the three from drifting apart.
         /// </summary>
-        public const string DisplayVersion = "1.1.0";
+        public const string DisplayVersion = "1.1.1";
 
         internal static ManualLogSource Log;
         internal static Plugin Instance;
@@ -56,7 +56,7 @@ namespace PlushieSwap
         internal static ConfigEntry<int> ConfigVersionEntry;
 
         /// <summary>Bump when a default value changes in a way that should migrate.</summary>
-        private const int CurrentConfigVersion = 2;
+        private const int CurrentConfigVersion = 3;
 
         internal static PlushieVariant ActiveVariant = PlushieVariant.ZichaoXiong;
 
@@ -123,6 +123,33 @@ namespace PlushieSwap
                                         + DefaultOutlinePixels.ToString("F1") + " px");
                         }
                     }
+                },
+
+                // v2 -> v3: the outline stopped being a fixed screen-pixel width and became
+                // a multiple of the baked thickness, so the key was renamed to drop the
+                // "(pixels)". The value is a player preference, so it is carried over rather
+                // than reset — but only when it actually differs from the new default, since
+                // a key that was never in the file binds to that default anyway.
+                new ConfigMigration
+                {
+                    From = 2,
+                    To = 3,
+                    Apply = delegate
+                    {
+                        ConfigEntry<float> legacy =
+                            Config.Bind("General", "Outline Width (pixels)", DefaultOutlinePixels);
+                        if (!Mathf.Approximately(legacy.Value, DefaultOutlinePixels)
+                            && Mathf.Approximately(OutlineWidthEntry.Value, DefaultOutlinePixels))
+                        {
+                            OutlineWidthEntry.Value = legacy.Value;
+                            DiagnosticLog.Always("Config migration: outline width "
+                                        + legacy.Value.ToString("F2") + " carried over from "
+                                        + "the old \"Outline Width (pixels)\" key");
+                        }
+                        // Drop the legacy entry so the renamed key does not leave a second
+                        // row behind in the file (and in the in-game settings panel).
+                        Config.Remove(new ConfigDefinition("General", "Outline Width (pixels)"));
+                    }
                 }
             };
 
@@ -163,13 +190,15 @@ namespace PlushieSwap
         private static float _lastOutlineWidth;
 
         /// <summary>
-        /// Default ink width. The old baked outline measured roughly 7-10 px at normal
-        /// holding distance, so a hairline default looked like a regression; 5 px keeps
-        /// the drawn look while staying crisp up close.
+        /// The width multiplier that means "the thickness the models were baked with".
+        ///
+        /// The pipeline bakes the shell with a push of 0.75% of the plush's height, which is
+        /// the authored look; the config value scales that. It is no longer a pixel count,
+        /// because the line is part of the model now and scales with it (see PlushieOutline).
         /// </summary>
-        private const float DefaultOutlinePixels = 5f;
+        internal const float DefaultOutlinePixels = 5f;
 
-        /// <summary>The outline's width in screen pixels, with a sane fallback.</summary>
+        /// <summary>The outline's width multiplier, with a sane fallback.</summary>
         internal static float OutlineWidthPixels
         {
             get { return OutlineWidthEntry != null ? OutlineWidthEntry.Value : DefaultOutlinePixels; }
@@ -233,10 +262,12 @@ namespace PlushieSwap
                 "Optional in-game hotkey that cycles Vanilla -> Miffy -> Zichao Xiong. "
                 + "The choice is saved to this config file.");
             OutlineWidthEntry = Config.Bind(
-                "General", "Outline Width (pixels)", DefaultOutlinePixels,
+                "General", "Outline Width", DefaultOutlinePixels,
                 new ConfigDescription(
-                    "Thickness of the plush's ink outline, in screen pixels. It stays the "
-                    + "same on screen at every distance and camera. 0 hides the outline.",
+                    "Thickness of the plush's ink outline, as a multiple of the width the "
+                    + "models are baked with (5). The line belongs to the plush, so it "
+                    + "scales with it: it gets thinner as the plush moves away instead of "
+                    + "holding a fixed pixel width. 0 hides the outline.",
                     new AcceptableValueRange<float>(0f, 12f)));
             ConfigVersionEntry = Config.Bind(
                 "Internal", "Config Version", 0,
@@ -371,10 +402,10 @@ namespace PlushieSwap
         }
 
         /// <summary>
-        /// The width is read live by every outline driver, so a change only needs the new
-        /// value pushed out. The one exception is turning the outline back ON: at width 0
-        /// no outline object is built at all, so there is no driver to push to and the
-        /// models must be rebuilt to create one.
+        /// A width change only needs the new value pushed to the live outline drivers, which
+        /// re-extrude on the spot (no per-frame work is involved). The one exception is
+        /// turning the outline back ON after a 0: at width 0 no outline object is built at
+        /// all, so there is no driver to push to and the models must be rebuilt to create one.
         /// </summary>
         private static void OnOutlineWidthChanged(object sender, EventArgs e)
         {

@@ -5,7 +5,7 @@
     <AssemblyName>PlushieSwap</AssemblyName>
     <RootNamespace>PlushieSwap</RootNamespace>
     <LangVersion>9.0</LangVersion>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <AssemblyTitle>Plushie Swap</AssemblyTitle>
     <Product>Plushie Swap</Product>
     <Description>Replaces the BingBong plush with Miffy or Zichao Xiong.</Description>

@@ -15,8 +15,8 @@ Default form: **Zichao Xiong**.
   plush, so holding it, dropping it and stuffing it in a backpack all behave correctly.
 - **Cartoon treatment** (so it stops looking like a 3D-print photo):
   - **Hand-drawn ink outline** — a complete inverted hull with **no faces deleted**, using a
-    per-vertex "ink width" to decide where no line is drawn. The width is constant in
-    **screen pixels**, so distance, camera angle and resolution do not change it.
+    per-vertex "ink width" to decide where no line is drawn. The line is part of the model,
+    so it scales with the plush and stays proportionate at any distance.
   - **Clean cream highlights** — bright colours are pushed toward `#FFFAF2`.
   - **Soft contact shading** — a point-cloud AO bake, smoothed, so creases read without
     blocky noise.
@@ -35,7 +35,7 @@ Default form: **Zichao Xiong**.
 3. Launch the game.
 
 **One file is all you need** — the models, shading maps and icons are embedded in the DLL
-(12,133,376 bytes, about 11.6 MiB).
+(12,136,960 bytes, about 11.6 MiB).
 
 ### Optional: use a custom model without rebuilding
 
@@ -64,7 +64,7 @@ Config file: `BepInEx\config\com.zhuanban.peak.plushieswap.cfg`
 | `Hold Height Offset` | `0.0` | Extra up/down nudge while held |
 | `Rename Item` | `true` | Rename the item to the chosen plush |
 | `Replace Icon` | `true` | Replace the inventory icon |
-| `Outline Width (pixels)` | `5.0` | Ink line width in screen pixels; `0` disables it |
+| `Outline Width` | `5.0` | Ink line width as a multiple of the baked width (0.75% of the plush's height); `0` hides it |
 | `Shader Override` | *(empty)* | Only needed if the model renders with wrong colours |
 | `Verbose Logging` | `false` | Detailed diagnostics; off means warnings and errors only |
 
@@ -149,7 +149,7 @@ a `dist/` that does not match the current commit, and the zip it writes is repro
 
 | Element | Approach |
 | --- | --- |
-| **① Outline** (the key one) | Inverted hull: the body is expanded outward (**no faces deleted**) and back-face culled, so ink only shows at the silhouette edge. Width is constant in screen pixels. |
+| **① Outline** (the key one) | Inverted hull: the body is expanded outward (**no faces deleted**) and back-face culled, so ink only shows at the silhouette edge. The thickness lives in the model's own space, so the line scales with the plush. |
 | **② Clean bright blocks** | Colours with luminance > 0.55 are pushed toward cream `#FFFAF2` (more the brighter they are). |
 | **③ Simple soft shading** | Point-cloud AO, upper-hemisphere occlusion only, 3 Laplacian smoothing passes plus a power curve. |
 | **④ A little specular** | `_Smoothness = 0.14` for a soft cloth sheen rather than plastic. |
@@ -165,8 +165,8 @@ That left thousands of boundary edges, and every boundary edge is exactly where 
 breaks — the source of the "dashed, uneven" outline. The shell is now a **complete closed
 surface** and uses a per-vertex ink width instead (0 = no line). A zero-width vertex sits on
 the body surface and is naturally hidden by the body through back-face culling, so nothing has
-to be deleted. Widths ship inside the `.psmesh` and are restored exactly at runtime before
-being re-expanded in screen space.
+to be deleted. Widths ship inside the `.psmesh` and are restored exactly at runtime, where the
+push is re-applied in the model's own space for the configured width.
 
 The pipeline also has an `enclosed` ("inside another shell") mask, which is **deliberately
 unused**: it classifies the arm tips resting against the skirt as enclosed and cuts the
@@ -280,8 +280,10 @@ That licence covers this project's code only, not the third-party models under `
 - This is a **local visual replacement**: only clients that installed the mod see it. Other
   players still see the vanilla plush.
 - The vanilla hover highlight does not apply to the replacement (it uses its own materials).
-- The outline is recomputed on the CPU every frame (about 15k vertices per instance). With no
-  Unity editor available to compile a custom shader, that is the only way to get a
-  screen-pixel-constant width.
+- The outline is baked into the model's own space, so it scales with the plush rather than
+  holding a fixed pixel width. Up close the line is a little thicker than on a distant plush;
+  that is what keeps a far-away plush from wearing a disproportionately heavy border.
+- The outline costs nothing per frame: the shell is extruded once when the model is built, and
+  again only if the outline width setting changes.
 - The mod does not modify the game's voice lines or audio, and does not change any item's
   gameplay logic — it replaces appearance, name and icon only.

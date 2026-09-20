@@ -3,34 +3,28 @@ using UnityEngine;
 namespace PlushieSwap
 {
     /// <summary>
-    /// Gives the ink shell a constant screen-space width.
+    /// Sets the ink shell's thickness as a property of the model, not of the screen.
     ///
-    /// The line used to be a fixed length in object space: the Python pipeline pushed every
-    /// shell vertex out along its normal by a constant world distance. That distance is what
-    /// was wrong — measured on this model it occupies 37 px at arm's length and 0.77 px from
-    /// across the room, a 48-fold swing, and even at one distance the same amount of push
-    /// differs roughly threefold between vertices depending on how edge-on they are. That is
-    /// the "uneven and broken" look.
+    /// The shell ships as `body + normal * bakedThickness * width`, i.e. already pushed out
+    /// by a fixed distance in the model's own space. That is the behaviour an outline should
+    /// have: the line belongs to the plush, so it shrinks with the plush as it moves away,
+    /// grows with it as it comes closer, and follows `World Scale` for free.
     ///
-    /// The cure is to extrude in screen space instead, which is what an outline shader does in
-    /// its vertex stage:
+    /// An earlier version re-extruded the shell every frame in screen space, holding the line
+    /// at a constant number of pixels at any distance (`scale *= depth`, the `positionCS.w`
+    /// trick an outline shader uses). For a plush that is visibly wrong in one direction: the
+    /// plush shrinks with distance while the line does not, so a plush across the room ends up
+    /// wearing a proportionally far fatter outline than the one in your hands. It also cost a
+    /// full rewrite of roughly 15k vertices per instance per frame, which is measurable with a
+    /// dozen plushies in the scene.
     ///
-    ///     positionCS.xy += normalize(normalCS.xy) / _ScreenParams.xy
-    ///                      * (widthPx * 2) * positionCS.w
+    /// The extrusion is therefore done here, once, in the model's own space, and the shell is
+    /// then left alone: nothing runs per frame at all. The config value only scales the baked
+    /// thickness.
     ///
-    /// `* positionCS.w` cancels the perspective divide (so distance stops mattering) and
-    /// `/ _ScreenParams.xy` converts pixels to NDC (so resolution stops mattering).
-    ///
-    /// A custom shader would do this on the GPU, but building one needs the Unity editor to
-    /// compile it, and this project has no editor available. The same arithmetic is therefore
-    /// done here, once per frame, on the shell's vertices. The shell is small (about 15k
-    /// vertices) and each vertex only needs two matrix multiplies, and the result is
-    /// identical because the shader and this code evaluate the same formula.
-    ///
-    /// The first step is to recover the surface the shell was inflated from, by subtracting
-    /// exactly the push that was baked in (<see cref="PsMeshReader.Asset.BakedOutlineThickness"/>).
-    /// That recovery is exact — it lands back on the body vertex to float precision — so
-    /// nothing here is an approximation of the model's shape, only of the GPU doing the work.
+    /// The body surface the shell was inflated from is recovered by subtracting exactly the
+    /// push that was baked in (<see cref="PsMeshReader.Asset.BakedOutlineThickness"/>), so the
+    /// extrusion can be recomputed for any width without accumulating error.
     /// </summary>
     internal sealed class PlushieOutline : MonoBehaviour
     {
@@ -48,21 +42,21 @@ namespace PlushieSwap
         /// </summary>
         private float[] _width;
 
-        /// <summary>Scratch the deformed vertices are written into.</summary>
+        /// <summary>Scratch the extruded vertices are written into.</summary>
         private Vector3[] _buffer;
 
         /// <summary>
-        /// The shell's bounds before any per-frame extrusion, so the padding can be
-        /// recomputed each frame from the offset that was actually applied instead of
-        /// relying on a fixed guess.
+        /// The shell's bounds before the extrusion applied here, so the padding can be
+        /// recomputed from the offset actually used instead of a fixed guess.
         /// </summary>
         private Bounds _baseBounds;
 
         private Mesh _mesh;
-        private Renderer _renderer;
-        private Camera _camera;
+
+        /// <summary>The push that is baked into the shipped shell, in local units.</summary>
+        private float _bakedThickness;
+
         private float _widthPixels;
-        private float _nextCameraSearch;
 
         /// <summary>
         /// Attaches the driver to the outline object and recovers the body surface.
@@ -71,9 +65,8 @@ namespace PlushieSwap
         /// an older .psmesh without a recorded thickness, or a model with no outline at all,
         /// simply behaves as before.
         /// </summary>
-        internal static PlushieOutline Attach(GameObject host, Mesh mesh, Renderer renderer,
-                                              float bakedThickness, float[] widths,
-                                              float widthPixels)
+        internal static PlushieOutline Attach(GameObject host, Mesh mesh, float bakedThickness,
+                                              float[] widths, float widthPixels)
         {
             if (host == null || mesh == null || bakedThickness <= 0f || widthPixels <= 0f)
             {
@@ -126,42 +119,109 @@ namespace PlushieSwap
 
             PlushieOutline driver = host.AddComponent<PlushieOutline>();
             driver._mesh = mesh;
-            driver._renderer = renderer;
             driver._surface = surface;
             driver._normal = normals;
             driver._width = widths;
             driver._buffer = new Vector3[count];
+            driver._bakedThickness = bakedThickness;
             driver._widthPixels = widthPixels;
 
-            // The vertices change every frame, so tell Unity not to keep a static copy.
-            // Called before the first per-frame write rather than after: Unity's docs say
-            // the hint applies the next time the vertex buffers are (re)created, so
-            // marking after the data has already been uploaded could miss the one upload
-            // that matters.
+            // The vertices change whenever the width setting does, so tell Unity not to
+            // keep a static copy. Called before the first write rather than after: the
+            // hint applies the next time the vertex buffers are (re)created, so marking
+            // after the data has already been uploaded could miss that upload.
             mesh.MarkDynamic();
 
-            // The per-frame screen-space extrusion moves vertices outward in world space,
-            // which can push the outermost ink past the baked bounds; Unity would then cull
-            // the shell when the plush sits near the edge of the screen. A fixed pad cannot
-            // be right, because the push grows with distance (a constant pixel width is a
-            // LARGER world distance the further away the camera is): the old 0.05 pad held
-            // up to roughly 9 m at the default settings and failed beyond that, and at
-            // World Scale 0.3 with a 12 px line it failed past ~1.2 m. So the original
-            // bounds are remembered here and re-padded every frame in LateUpdate by the
-            // largest offset actually applied, which is exact at any distance and scale.
             driver._baseBounds = mesh.bounds;
-            Bounds bounds = mesh.bounds;
-            bounds.Expand(0.05f);
-            mesh.bounds = bounds;
+            driver.Extrude();
 
             return driver;
         }
 
-        /// <summary>Width in screen pixels; 0 hides the line.</summary>
+        /// <summary>Width multiplier for the line; 0 hides it.</summary>
         internal float WidthPixels
         {
             get { return _widthPixels; }
-            set { _widthPixels = value; }
+            set
+            {
+                if (Mathf.Approximately(_widthPixels, value))
+                {
+                    return;
+                }
+                _widthPixels = value;
+                if (_mesh == null)
+                {
+                    return;
+                }
+
+                // A width of 0 means "no line". Collapsing the shell onto the body would
+                // leave two coincident surfaces fighting over the same depth, so the outline
+                // object is switched off instead. `SetWidthOnAll` still finds it — the search
+                // is done with `includeInactive: true` — so a later non-zero width turns it
+                // back on.
+                bool on = value > 0f;
+                if (gameObject.activeSelf != on)
+                {
+                    gameObject.SetActive(on);
+                }
+                if (on)
+                {
+                    Extrude();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Rebuilds the shell's vertices for the current width.
+        ///
+        /// Runs on attach and whenever the config changes — never per frame. The offset is
+        /// `normal * bakedThickness * ink * (width / reference)`, in the model's own space,
+        /// so the result is independent of the camera, the distance and the resolution.
+        /// </summary>
+        private void Extrude()
+        {
+            if (_mesh == null || _surface == null || _normal == null || _buffer == null)
+            {
+                return;
+            }
+
+            float scale = _bakedThickness * (_widthPixels / Plugin.DefaultOutlinePixels);
+            int count = _surface.Length;
+            float maxOffset = 0f;
+
+            for (int i = 0; i < count; i++)
+            {
+                // Per-vertex ink width. A vertex the pipeline tucked inside the body
+                // (an eye, the mouth, a blush, a downward-facing surface) carries 0 or
+                // less and is left exactly on the body surface, so the body's own depth
+                // hides it. The hull is never cut, so the silhouette line stays
+                // continuous.
+                float ink = _width != null ? _width[i] : 1f;
+                if (ink <= 0f)
+                {
+                    _buffer[i] = _surface[i];
+                    continue;
+                }
+
+                float push = scale * ink;
+                if (push > maxOffset)
+                {
+                    maxOffset = push;
+                }
+                _buffer[i] = _surface[i] + _normal[i] * push;
+            }
+
+            _mesh.vertices = _buffer;
+
+            // The extrusion moves vertices outward in the model's own space, which can push
+            // the outermost ink past the baked bounds; Unity would then cull the shell when
+            // the plush sits near the edge of the screen. The padding is recomputed from the
+            // largest push actually applied rather than guessed, so it is right at any width
+            // and any World Scale (the scale is part of the transform, so it needs no term
+            // here).
+            Bounds bounds = _baseBounds;
+            bounds.Expand(maxOffset * 2f + 0.01f);
+            _mesh.bounds = bounds;
         }
 
         /// <summary>
@@ -206,192 +266,6 @@ namespace PlushieSwap
                     all[i].WidthPixels = widthPixels;
                 }
             }
-        }
-
-        private void LateUpdate()
-        {
-            if (_mesh == null || _surface == null || _buffer == null)
-            {
-                return;
-            }
-
-            // A shell nobody can see costs nothing, which matters for dropped or distant
-            // plushies.
-            if (_renderer != null && !_renderer.isVisible)
-            {
-                return;
-            }
-
-            Camera camera = ResolveCamera();
-            if (camera == null)
-            {
-                return;
-            }
-
-            // Screen height is taken from the display rather than the render target, so a
-            // reduced render scale (the game allows 0.2..1.0) still yields the same number
-            // of pixels on screen: the target is upscaled afterwards, and dividing by the
-            // render height instead would make the line grow as the scale drops.
-            float screenHeight = Screen.height;
-            if (screenHeight < 2f)
-            {
-                return;
-            }
-
-            // Model -> camera -> model, in one pair of matrices for the whole mesh.
-            Matrix4x4 modelToCamera = camera.worldToCameraMatrix * transform.localToWorldMatrix;
-            Matrix4x4 cameraToModel = modelToCamera.inverse;
-
-            // World units per pixel at one unit of depth. For a perspective camera a pixel
-            // subtends 2*tan(fov/2)/height at unit distance. An orthographic camera has no
-            // perspective: its vertical view is exactly `2 * orthographicSize` world units
-            // tall, stretched over the screen's height in pixels, so a pixel is
-            // `2 * size / screenHeight` across at EVERY depth. (The previous
-            // `1 / (2 * size)` was dimensionally wrong — it is world units per pixel only
-            // when the screen is one unit tall — and would have made the line 2.7x to 90x
-            // too thick. It is unreachable today because the game's cameras are all
-            // perspective, but it is fixed rather than left as a trap.)
-            float perPixel;
-            if (camera.orthographic)
-            {
-                perPixel = 2f * Mathf.Max(1e-4f, camera.orthographicSize) / screenHeight;
-            }
-            else
-            {
-                float tanHalfFov = Mathf.Tan(camera.fieldOfView * 0.5f * Mathf.Deg2Rad);
-                perPixel = (2f * tanHalfFov) / screenHeight;
-            }
-
-            float width = _widthPixels;
-            int count = _surface.Length;
-
-            // The largest world-space push applied to any vertex this frame. It is used to
-            // pad the mesh bounds below, so it must be the largest, not the last.
-            float maxOffset = 0f;
-
-            for (int i = 0; i < count; i++)
-            {
-                Vector3 point = modelToCamera.MultiplyPoint3x4(_surface[i]);
-                Vector3 normal = modelToCamera.MultiplyVector(_normal[i]);
-
-                // Per-vertex ink width. A vertex the pipeline tucked inside the body
-                // (an eye, the mouth, a blush, a downward-facing surface) carries 0 or
-                // less and is pushed the other way, so the body's own depth hides it.
-                // The hull is never cut, so the silhouette line stays continuous.
-                float ink = _width != null ? _width[i] : 1f;
-                if (ink <= 0f)
-                {
-                    // No ink here: the vertex was baked onto the body surface, and the
-                    // shell is front-face culled, so the body simply hides it.
-                    _buffer[i] = _surface[i];
-                    continue;
-                }
-
-                // Screen-space direction of the normal.
-                //
-                // The perspective matrix scales x by 1/aspect but a pixel is already
-                // narrower than it is tall by that same factor, so the two cancel: a
-                // camera-space direction (nx, ny) moves the point by the same number of
-                // pixels per unit along both axes. The direction is therefore just
-                // (nx, ny), with no aspect term. (An earlier version of this comment said
-                // adding one would "tilt" the offset; that is not what happens — it scales
-                // the length uniformly. The conclusion holds either way, but the reason
-                // is the cancellation, not tilting.)
-                float dx = normal.x;
-                float dy = normal.y;
-                float length = Mathf.Sqrt(dx * dx + dy * dy);
-                if (length > 1e-8f)
-                {
-                    dx /= length;
-                    dy /= length;
-                }
-                else
-                {
-                    // Dead-on to the camera, so there is no silhouette to widen. Leaving it
-                    // at zero also keeps the maths away from a division by nothing.
-                    dx = 0f;
-                    dy = 0f;
-                }
-
-                // One pixel at this depth, times the wanted width, times this vertex's
-                // share of it.
-                float scale = perPixel * width * ink;
-                if (!camera.orthographic)
-                {
-                    float depth = -point.z;
-                    if (depth < 0f)
-                    {
-                        depth = 0f;
-                    }
-                    scale *= depth;
-                }
-
-                if (scale > maxOffset)
-                {
-                    maxOffset = scale;
-                }
-
-                Vector3 offsetInCamera = new Vector3(dx * scale, dy * scale, 0f);
-                _buffer[i] = _surface[i] + cameraToModel.MultiplyVector(offsetInCamera);
-            }
-
-            _mesh.vertices = _buffer;
-
-            // Re-pad the bounds from the offset just applied. The mesh is drawn with the
-            // same transform this method measured, so the world-space push is `maxOffset`
-            // in every direction (the extrusion is radial in the screen plane); a small
-            // epsilon covers the vertex the extrusion moved furthest and float error.
-            Bounds bounds = _baseBounds;
-            bounds.Expand(maxOffset * 2f + 0.01f);
-            _mesh.bounds = bounds;
-        }
-
-        private Camera ResolveCamera()
-        {
-            if (_camera != null && _camera.isActiveAndEnabled)
-            {
-                return _camera;
-            }
-
-            // Reaching here means the cached camera is gone or disabled, so there is
-            // nothing usable to hand back: returning it (as this used to) let the caller
-            // run a whole frame of extrusion against a disabled camera. Between searches
-            // the answer is simply "no camera"; the caller already treats null as "skip
-            // this frame", and the shell keeps the geometry it had.
-            if (Time.unscaledTime < _nextCameraSearch)
-            {
-                return null;
-            }
-            _nextCameraSearch = Time.unscaledTime + 1f;
-
-            // The gameplay camera. `Camera.main` needs the MainCamera tag, which this game
-            // does set, but a miss should not disable the outline, so any active camera with
-            // the highest depth is taken as a fallback.
-            Camera best = Camera.main;
-            if (best != null && best.isActiveAndEnabled)
-            {
-                _camera = best;
-                return _camera;
-            }
-
-            best = null;
-            Camera[] all = Camera.allCameras;
-            float bestDepth = float.NegativeInfinity;
-            for (int i = 0; i < all.Length; i++)
-            {
-                Camera candidate = all[i];
-                if (candidate == null || !candidate.isActiveAndEnabled)
-                {
-                    continue;
-                }
-                if (candidate.depth > bestDepth)
-                {
-                    bestDepth = candidate.depth;
-                    best = candidate;
-                }
-            }
-            _camera = best;
-            return _camera;
         }
     }
 }
