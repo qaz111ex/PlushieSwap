@@ -1,0 +1,345 @@
+
+==== Jelly  [globalgamemanagers.assets pid=86] ====
+  properties: _Zoom, _Metalic, _Outline, _Texture2Scale, _INVERT_TEX_2, _VertexColor, _Texture2Color, _Texture2, _Texture, _Remap, _Color, _Color2, _QueueOffset, _QueueControl, unity_Lightmaps, unity_LightmapsInd, unity_ShadowMasks, _AlphaClip
+  --- subshader 0  passes=5
+    pass 0 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 1 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 2 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 3 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 4 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+
+==== GD/CharacterBadges  [globalgamemanagers.assets pid=146] ====
+  properties: _AddSpecular, _Smoothness, _BadgeArray, _RandomRotationAmount, _RandomRotTex, BadgeUnlockTexture, _VertexGhost, _Opacity, _QueueOffset, _QueueControl, unity_Lightmaps, unity_LightmapsInd, unity_ShadowMasks, _AlphaClip
+  --- subshader 0  passes=5
+    pass 0 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 1 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 2 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 3 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 4 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+
+==== W/Character  [globalgamemanagers.assets pid=210] ====
+  properties: _SpecularPower, _AddSpecular, _NoShadowSpec, _Interactable, _INTERACTABLE, _UseSkinTone, _UseRawVertexColor, _UseTextureAlpha, _UseRawVertexColor, _Stepalphabyvertexcolor, _VertexColor, _MainTex, _MainTexMovement, _HeightMaskSmoothness, _FlipHeightMask, _SkinColor, _Tint, _HueStr, _HueShifts, _VertexGhost, _BaseColor, _BaseSmooth, _Color1, _Smooth1, _Height1, _Texture1, _UV1, _Tex1Movement, _Flip1, _Triplanar1On, _Remap1, _UseHeightMask1, _Color2, _Smooth2, _Height2, _Texture2, _UV2, _Tex2Movement, _Flip2, _Triplanar2On, _Remap2, _UseHeightMask2, _Color3, _Smooth3, _Height3, _Texture3, _UV3, _Tex3Movement, _Flip3, _Triplanar3On, _Remap3, _UseHeightMask3, _Color4, _Smooth4, _Height4, _Texture4, _UV4, _Tex4Movement, _Flip4, _PointPing, _Opacity, _StatusGlow, _StatusColor, _Triplanar4On, _Remap4, _UseHeightMask4, _QueueOffset, _QueueControl, unity_Lightmaps, unity_LightmapsInd, unity_ShadowMasks, _AlphaClip
+  --- subshader 0  passes=5
+    pass 0 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 1 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 2 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 3 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 4 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+
+==== Tornado  [resources.assets pid=1377] ====
+  properties: _Brightness, _Metalic, _Outline, _Color1, _Color2, _Brightn, _Colors, _HeightFade, _Texture, _T_Scroll, _T_Scale, _T_Twist, _Distort, _D_Scroll, _D_Scale, _D_Str, _D_Twist, _Noise, _N_Scroll, _N_Scale, _N_Str, _Clip, _Offset, _WobbleStr, _QueueOffset, _QueueControl, unity_Lightmaps, unity_LightmapsInd, unity_ShadowMasks, _AlphaClip
+  --- subshader 0  passes=5
+    pass 0 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 1 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 2 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 3 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 4 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+
+==== Explosion  [resources.assets pid=1411] ====
+  properties: _Texture, _Brightness, _Metalic, _Outline, _TextureSmall, _Remap2, _Remap3, _Fade, _Color1, _Color2, _Color3, _Random, _QueueOffset, _QueueControl, unity_Lightmaps, unity_LightmapsInd, unity_ShadowMasks, _AlphaClip
+  --- subshader 0  passes=5
+    pass 0 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 1 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 2 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 3 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>
+    pass 4 name='' type=0
+      culling=<missing>
+      zwrite=<missing>
+      ztest=<missing>
+      blend0=<missing>
+      blend1=<missing>
+      blendOp=<missing>
+      colormask=<missing>
+      offset=<missing>
+      alphatocoverage=<missing>
+      srcblend=<missing>
+      dstblend=<missing>
+      sepscale=<missing>

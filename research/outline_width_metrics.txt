@@ -1,0 +1,24 @@
+
+==== miffy: 15525 outline verts, baked object thickness 0.00723 units, model size [0.662 0.972 0.415] ====
+ dist |     object-space px (mean +- std, p5..p95) |      screen-space px @ 2px target
+--------------------------------------------------------------------------------------------
+ 0.35 |    40.08 +-   33.70  p5   6.53  p95  108.40 |     2.00 +-    0.00  p5   2.00  p95    2.00
+ 0.50 |    18.24 +-    9.07  p5   4.82  p95   35.24 |     2.00 +-    0.00  p5   2.00  p95    2.00
+ 1.00 |     6.85 +-    2.43  p5   2.43  p95   10.13 |     2.00 +-    0.00  p5   2.00  p95    2.00
+ 2.00 |     3.16 +-    1.06  p5   1.17  p95    4.32 |     2.00 +-    0.00  p5   2.00  p95    2.00
+ 4.00 |     1.55 +-    0.50  p5   0.61  p95    2.08 |     2.00 +-    0.00  p5   2.00  p95    2.00
+ 8.00 |     0.77 +-    0.24  p5   0.31  p95    1.03 |     2.00 +-    0.00  p5   2.00  p95    2.00
+  silhouette verts (|clipNormal.xy|>=0.35): 11360 of 15525
+  NOTE: object-space widths scale linearly with the object's localScale too; the game shrinks backpack items to 0.5.
+
+==== zichaoxiong: 16831 outline verts, baked object thickness 0.00723 units, model size [0.833 0.978 0.773] ====
+ dist |     object-space px (mean +- std, p5..p95) |      screen-space px @ 2px target
+--------------------------------------------------------------------------------------------
+ 0.35 | 5497293.50 +- 41099704.55  p5   3.47  p95 7403875.06 | 25448.15 +- 53984.64  p5   2.00  p95 165667.79
+ 0.50 |    81.94 +-  143.33  p5   2.84  p95  391.96 |     2.00 +-    0.00  p5   2.00  p95    2.00
+ 1.00 |     8.57 +-    3.81  p5   2.10  p95   14.48 |     2.00 +-    0.00  p5   2.00  p95    2.00
+ 2.00 |     3.42 +-    1.15  p5   1.20  p95    4.85 |     2.00 +-    0.00  p5   2.00  p95    2.00
+ 4.00 |     1.59 +-    0.50  p5   0.65  p95    2.16 |     2.00 +-    0.00  p5   2.00  p95    2.00
+ 8.00 |     0.78 +-    0.24  p5   0.33  p95    1.04 |     2.00 +-    0.00  p5   2.00  p95    2.00
+  silhouette verts (|clipNormal.xy|>=0.35): 4854 of 16831
+  NOTE: object-space widths scale linearly with the object's localScale too; the game shrinks backpack items to 0.5.

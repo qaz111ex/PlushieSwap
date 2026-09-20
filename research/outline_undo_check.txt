@@ -1,0 +1,19 @@
+_OutlineBakedThickness = outline_thickness * target_height = 0.0075 * 0.9635 = 0.00722625
+
+==== miffy ====
+  shell vertices                : 15525
+  raw shell -> nearest body     : mean 0.005190 p95 0.007226 max 0.007226
+  shell - normal*BAKED -> body  : mean 0.000000 p95 0.000000 max 0.000000
+  => undo is EXACT
+  object-space line at localScale 1.0 : 0.007226 world units
+  object-space line at localScale 0.5 : 0.003613 world units  <- the backpack halving
+  screen-space shader line            : constant, independent of scale
+
+==== zichaoxiong ====
+  shell vertices                : 16831
+  raw shell -> nearest body     : mean 0.001902 p95 0.007226 max 0.007226
+  shell - normal*BAKED -> body  : mean 0.000000 p95 0.000000 max 0.000000
+  => undo is EXACT
+  object-space line at localScale 1.0 : 0.007226 world units
+  object-space line at localScale 0.5 : 0.003613 world units  <- the backpack halving
+  screen-space shader line            : constant, independent of scale

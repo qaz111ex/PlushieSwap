@@ -1,0 +1,229 @@
+227 shaders
+name                                                    file                   subsh pass props
+AntiSphere                                              resources.assets           1    3    19
+BalloonRope                                             resources.assets           1    5     9
+BigDumbSphere                                           resources.assets           1    5    12
+BlindPost                                               globalgamemanagers.assets     1    5    20
+BlowParticle                                            resources.assets           1    5    15
+BulletTrail                                             resources.assets           1    5    12
+Cloud                                                   resources.assets           1    5    25
+ColorParticle                                           sharedassets4.assets       1    5    10
+DarkFade                                                resources.assets           1    5     6
+Decal                                                   globalgamemanagers.assets     1    5    21
+DepartureBoard                                          globalgamemanagers.assets     1    5    16
+Eruption                                                globalgamemanagers.assets     1    5    19
+Explosion                                               resources.assets           1    5    18
+FallPost                                                sharedassets1.assets       1    5    13
+FireHaze                                                sharedassets4.assets       1    4    14
+Flat                                                    resources.assets           1    5    13
+FogOrb                                                  sharedassets4.assets       1    5    24
+FogPlanePeak                                            sharedassets4.assets       1    5     6
+FogWall                                                 globalgamemanagers.assets     1    4    13
+FuckassAdditive                                         resources.assets           1    3    12
+GD/Bubbles                                              sharedassets4.assets       1    5    10
+GD/CharacterBadges                                      globalgamemanagers.assets     1    5    14
+GD/DustLine                                             sharedassets4.assets       1    5    16
+GD/Face Cards                                           globalgamemanagers.assets     1    4    23
+GD/FireParticle                                         globalgamemanagers.assets     1    5    24
+GD/FogSurface                                           sharedassets4.assets       1    5    18
+GD/FoliageGD                                            globalgamemanagers.assets     1    5    53
+GD/FoliageGD-Opaque                                     globalgamemanagers.assets     1    5    46
+GD/GDGrass                                              globalgamemanagers.assets     1    4    35
+GD/HeliRotors                                           globalgamemanagers.assets     1    5    19
+GD/Lit Clouds Sky                                       globalgamemanagers.assets     1    2    15
+GD/Mirror                                               globalgamemanagers.assets     1    5    15
+GD/ParticleGeneric                                      sharedassets4.assets       1    5     8
+GD/ScreenFog                                            globalgamemanagers.assets     1    5     5
+GD/ScreenVFX                                            sharedassets0.assets       1    5    13
+GD/SphereFog                                            globalgamemanagers.assets     1    5    44
+GD/UIScreenMesh                                         sharedassets0.assets       1    2    10
+GD/Water-GD                                             globalgamemanagers.assets     1    3    48
+GhostHands                                              sharedassets4.assets       1    5    11
+Hidden/Core/DebugOccluder                               globalgamemanagers.assets     1    0     0
+Hidden/Core/DebugOcclusionTest                          globalgamemanagers.assets     1    0     0
+Hidden/Core/FallbackError                               globalgamemanagers.assets     1    1     0
+Hidden/Core/VrsVisualization                            globalgamemanagers.assets     1    1     0
+Hidden/CoreSRP/CoreCopy                                 globalgamemanagers.assets     1    2     0
+Hidden/SC Post Effects/3D Hue Shift                     globalgamemanagers.assets     1    2     0
+Hidden/SC Post Effects/Ambient Occlusion 2D             globalgamemanagers.assets     1    4     0
+Hidden/SC Post Effects/Black Bars                       globalgamemanagers.assets     1    2     0
+Hidden/SC Post Effects/Blur                             globalgamemanagers.assets     1    4     0
+Hidden/SC Post Effects/Caustics                         globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/Cloud Shadows                    globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/Color Split                      globalgamemanagers.assets     1    2     0
+Hidden/SC Post Effects/Colorize                         globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/Danger                           globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/DepthNormals                     globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/Dithering                        globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/Double Vision                    globalgamemanagers.assets     1    2     0
+Hidden/SC Post Effects/Edge Detection                   globalgamemanagers.assets     1    4     0
+Hidden/SC Post Effects/Fog                              globalgamemanagers.assets     1    5     0
+Hidden/SC Post Effects/Gradient                         globalgamemanagers.assets     1    2     0
+Hidden/SC Post Effects/Kaleidoscope                     globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/Kuwahara                         globalgamemanagers.assets     1    2     0
+Hidden/SC Post Effects/LUT                              globalgamemanagers.assets     1    2     0
+Hidden/SC Post Effects/Lensflares                       globalgamemanagers.assets     1    5     0
+Hidden/SC Post Effects/Light Streaks                    globalgamemanagers.assets     1    5     0
+Hidden/SC Post Effects/Mosaic                           globalgamemanagers.assets     1    3     0
+Hidden/SC Post Effects/Overlay                          globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/Pixelize                         globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/Posterize                        globalgamemanagers.assets     1    2     0
+Hidden/SC Post Effects/Radial Blur                      globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/Refraction                       globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/Ripples                          globalgamemanagers.assets     1    2     0
+Hidden/SC Post Effects/Scanlines                        globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/Sharpen                          globalgamemanagers.assets     1    2     0
+Hidden/SC Post Effects/Sketch                           globalgamemanagers.assets     1    2     0
+Hidden/SC Post Effects/SpeedLines                       globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/Sun Shafts                       globalgamemanagers.assets     1    3     0
+Hidden/SC Post Effects/Tilt Shift                       globalgamemanagers.assets     1    5     0
+Hidden/SC Post Effects/Transition                       globalgamemanagers.assets     1    1     0
+Hidden/SC Post Effects/Tube Distortion                  globalgamemanagers.assets     1    3     0
+Hidden/Shader Graph/FallbackError                       globalgamemanagers.assets     1    1     0
+Hidden/Sirenix/Editor/GUIIcon                           globalgamemanagers.assets     1    1     2
+Hidden/Sirenix/SdfIconShader                            globalgamemanagers.assets     1    1     0
+Hidden/TerrainEngine/Details/UniversalPipeline/BillboardWavingDoublePass globalgamemanagers.assets     1    3     4
+Hidden/TerrainEngine/Details/UniversalPipeline/Vertexlit globalgamemanagers.assets     1    4     1
+Hidden/TerrainEngine/Details/UniversalPipeline/WavingDoublePass globalgamemanagers.assets     1    3     4
+Hidden/TextCore/Sprite                                  resources.assets           1    1    10
+Hidden/UIR/ColorEffect                                  resources.assets           1    1     1
+Hidden/UIR/GaussianBlur                                 resources.assets           1    2     1
+Hidden/Universal Render Pipeline/Bloom                  globalgamemanagers.assets     1    7     0
+Hidden/Universal Render Pipeline/BokehDepthOfField      globalgamemanagers.assets     2   10     0
+Hidden/Universal Render Pipeline/CameraMotionBlur       globalgamemanagers.assets     1    6     0
+Hidden/Universal Render Pipeline/CameraMotionVectors    globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/ClusterDeferred        globalgamemanagers.assets     1    0     6
+Hidden/Universal Render Pipeline/CopyDepth              globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/DBufferClear           globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/Debug/DebugReplacement globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/FallbackError          globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/FallbackLoading        globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/FinalPost              globalgamemanagers.assets     2    2     0
+Hidden/Universal Render Pipeline/GaussianDepthOfField   globalgamemanagers.assets     1    5     0
+Hidden/Universal Render Pipeline/HBAO                   globalgamemanagers.assets     1   11     6
+Hidden/Universal Render Pipeline/LensFlareDataDriven    globalgamemanagers.assets     1    5     0
+Hidden/Universal Render Pipeline/LensFlareScreenSpace   globalgamemanagers.assets     1    5     0
+Hidden/Universal Render Pipeline/LutBuilderHdr          globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/LutBuilderLdr          globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/PaniniProjection       globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/Sampling               globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/Scaling Setup          globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/StencilDeferred        globalgamemanagers.assets     1    0    18
+Hidden/Universal Render Pipeline/StencilDitherMaskSeed  globalgamemanagers.assets     1    1     2
+Hidden/Universal Render Pipeline/Stop NaN               globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/SubpixelMorphologicalAntialiasing globalgamemanagers.assets     1    3     2
+Hidden/Universal Render Pipeline/TemporalAA             globalgamemanagers.assets     1    6     0
+Hidden/Universal Render Pipeline/UberPost               globalgamemanagers.assets     1    1     0
+Hidden/Universal Render Pipeline/XR/XRMirrorView        globalgamemanagers.assets     1    0     0
+Hidden/Universal Render Pipeline/XR/XRMotionVector      globalgamemanagers.assets     1    0     0
+Hidden/Universal Render Pipeline/XR/XROcclusionMesh     globalgamemanagers.assets     1    0     0
+Hidden/Universal/BlitHDROverlay                         globalgamemanagers.assets     1    0     0
+Hidden/Universal/CoreBlit                               globalgamemanagers.assets     1   25     0
+Hidden/Universal/CoreBlitColorAndDepth                  globalgamemanagers.assets     1    3     0
+Hidden/Universal/HDRDebugView                           globalgamemanagers.assets     1    2     0
+Hidden/VFX/Empty                                        globalgamemanagers.assets     1    1     0
+Hidden/VoxelizeShader                                   globalgamemanagers.assets     1    2     0
+InfiniteStamSphere                                      resources.assets           1    3    19
+Jelly                                                   globalgamemanagers.assets     1    5    18
+Kiosk                                                   globalgamemanagers.assets     1    5    13
+Laser                                                   resources.assets           1    5    13
+Lava                                                    globalgamemanagers.assets     1    5    39
+Lava Haze                                               globalgamemanagers.assets     1    5     9
+LavaPost                                                globalgamemanagers.assets     1    5    10
+LavaStream                                              globalgamemanagers.assets     1    5    21
+Legacy Shaders/Particles/Additive                       resources.assets           1    1     3
+Legacy Shaders/Particles/Alpha Blended                  resources.assets           1    1     3
+Legacy Shaders/Particles/Alpha Blended Premultiply      sharedassets0.assets       1    1     2
+LightRays                                               sharedassets4.assets       1    5    18
+NickParticle                                            resources.assets           1    5     8
+NickPost/Anti                                           sharedassets3.assets       1    3     9
+NickPost/Curse                                          sharedassets3.assets       1    5     6
+NickPost/Energy                                         globalgamemanagers.assets     1    5    16
+NickPost/Heat                                           sharedassets3.assets       1    5    17
+NickPost/Hot                                            globalgamemanagers.assets     1    5    12
+NickPost/Injury                                         sharedassets3.assets       1    4    12
+NickPost/Poison                                         globalgamemanagers.assets     1    5    14
+Particle_Cutout                                         globalgamemanagers.assets     1    5    10
+Particle_Transparent                                    globalgamemanagers.assets     1    5     8
+Particles/Standard Unlit                                globalgamemanagers.assets     1    3    30
+Peak/Grass                                              globalgamemanagers.assets     1    5    38
+PeakPortal                                              sharedassets4.assets       1    5    14
+PlayerGhost                                             resources.assets           1    5    21
+RainPost                                                globalgamemanagers.assets     1    5    25
+SandSlide                                               sharedassets4.assets       1    5    17
+Scouts/ItemPreview                                      globalgamemanagers.assets     1    5     7
+Scouts/PingRing                                         resources.assets           1    2     8
+Scouts/UI                                               globalgamemanagers.assets     1    1    33
+Scouts/UI_Rope                                          globalgamemanagers.assets     1    1    13
+Screen_Scanline                                         sharedassets3.assets       1    5    13
+Screenspace                                             resources.assets           1    5    14
+Shader Graphs/BinocularsOverlay                         globalgamemanagers.assets     1    2     9
+Shader Graphs/Decal                                     sharedassets4.assets       1    2    10
+Shader Graphs/EyeBlink                                  globalgamemanagers.assets     1    2     7
+Shader Graphs/FogFeature                                globalgamemanagers.assets     1    2     7
+Shader Graphs/Scary                                     globalgamemanagers.assets     1    2     6
+Shader Graphs/Screen Space Fog                          globalgamemanagers.assets     1    2    14
+Shockwave                                               resources.assets           1    5    10
+SlideTrail                                              resources.assets           1    5     7
+SmokeParticle                                           globalgamemanagers.assets     1    5    27
+SmokeParticleSimple                                     globalgamemanagers.assets     1    5    23
+Standard                                                sharedassets3.assets       2    7    27
+StarCloak                                               resources.assets           1    5    15
+Storm                                                   globalgamemanagers.assets     1    5    15
+StormFog                                                sharedassets4.assets       1    5    15
+TextMeshPro/Distance Field                              globalgamemanagers.assets     1    1    66
+TextMeshPro/Mobile/Distance Field                       globalgamemanagers.assets     1    1    36
+TextMeshPro/Sprite                                      globalgamemanagers.assets     1    1    11
+Tornado                                                 resources.assets           1    5    30
+TurtleShell                                             resources.assets           1    4    12
+UI Extensions/Particles/Additive                        resources.assets           1    1    10
+UI Extensions/Particles/Additive (Soft)                 resources.assets           1    1     9
+UI Extensions/Particles/Alpha Blended                   resources.assets           1    1    10
+UI Extensions/Particles/Alpha Blended Premultiply       resources.assets           1    1     9
+UI Extensions/Particles/Blend                           resources.assets           1    1     9
+UI Extensions/Particles/Multiply                        resources.assets           1    1     9
+UI Extensions/Particles/Multiply (Double)               resources.assets           1    1     9
+UI Extensions/Particles/VertexLit Blended               resources.assets           1    1     9
+UI Extensions/Particles/~Additive-Multiply              resources.assets           1    1    10
+UI Extensions/SoftMaskShader                            resources.assets           1    1    13
+UI Extensions/UI Image Crop                             resources.assets           1    1     3
+UI Extensions/UIAdditive                                resources.assets           1    1     8
+UI Extensions/UILinearDodge                             resources.assets           1    1     8
+UI Extensions/UIMultiply                                resources.assets           1    1     8
+UI Extensions/UIScreen                                  resources.assets           1    1     8
+UI Extensions/UISoftAdditive                            resources.assets           1    1     8
+UI/Particles/Hidden                                     resources.assets           1    1     0
+UI/Procedural UI Image                                  globalgamemanagers.assets     1    1     9
+UI_DashedLine                                           sharedassets3.assets       1    1    12
+UI_Eye                                                  sharedassets3.assets       1    1     9
+Universal Render Pipeline/2D/Sprite-Unlit-Default       globalgamemanagers.assets     1    1     7
+Universal Render Pipeline/Lit                           globalgamemanagers.assets     1    5    50
+Universal Render Pipeline/Particles/Lit                 resources.assets           1    3    43
+Universal Render Pipeline/Particles/Simple Lit          resources.assets           1    3    44
+Universal Render Pipeline/Particles/Unlit               resources.assets           1    3    36
+Universal Render Pipeline/Unlit                         globalgamemanagers.assets     1    4    20
+Unlit/SimpleShadow                                      globalgamemanagers.assets     1    4     7
+VoidFogWall                                             sharedassets4.assets       1    5     7
+VolumeParticles                                         globalgamemanagers.assets     1    5    11
+W/Character                                             globalgamemanagers.assets     1    5    72
+W/Peak_Clip                                             globalgamemanagers.assets     1    5    52
+W/Peak_Dither                                           resources.assets           1    5    53
+W/Peak_Glass                                            globalgamemanagers.assets     1    5    61
+W/Peak_GroundTransition                                 globalgamemanagers.assets     1    5    48
+W/Peak_Guidebook                                        globalgamemanagers.assets     1    5    55
+W/Peak_Honey                                            resources.assets           1    5    54
+W/Peak_Ice                                              globalgamemanagers.assets     1    5    69
+W/Peak_Mirage                                           sharedassets4.assets       1    5    56
+W/Peak_Petrified_Rock                                   resources.assets           1    5    62
+W/Peak_Rock                                             globalgamemanagers.assets     1    5    95
+W/Peak_Rope                                             globalgamemanagers.assets     1    5    58
+W/Peak_Splash                                           globalgamemanagers.assets     1    3    17
+W/Peak_Standard                                         globalgamemanagers.assets     1    5    52
+W/Peak_Transparent                                      resources.assets           1    5    42
+W/Peak_Waterfall                                        globalgamemanagers.assets     1    4    29
+W/Peak_glass_liquid                                     resources.assets           1    4    20
+W/Vine                                                  globalgamemanagers.assets     1    5    55
+WaterSVFX                                               sharedassets3.assets       1    5    15
+WavingFabric                                            globalgamemanagers.assets     1    5    59
+Zorro/UI/FadeIn                                         sharedassets1.assets       1    1    10

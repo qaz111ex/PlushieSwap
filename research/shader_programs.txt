@@ -1,0 +1,98 @@
+
+
+######## Jelly  [globalgamemanagers.assets] ########
+--- subshader 0: 5 passes
+  pass 0: {'pass': 'Forward', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'UniversalForwardOnly'), ('QUEUE', 'Transparent'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Transparent'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 1: {'pass': 'ShadowCaster', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'SHADOWCASTER'), ('QUEUE', 'Transparent'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Transparent'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 2: {'pass': 'DepthOnly', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'DepthOnly'), ('QUEUE', 'Transparent'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Transparent'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 3: {'pass': 'DepthNormals', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'DepthNormalsOnly'), ('QUEUE', 'Transparent'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Transparent'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 4: {'pass': 'MotionVectors', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'MOTIONVECTORS'), ('QUEUE', 'Transparent'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Transparent'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+
+
+######## GD/CharacterBadges  [globalgamemanagers.assets] ########
+--- subshader 0: 5 passes
+  pass 0: {'pass': 'Forward', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'UniversalForwardOnly'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 1: {'pass': 'ShadowCaster', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'SHADOWCASTER'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 2: {'pass': 'DepthOnly', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'DepthOnly'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 3: {'pass': 'DepthNormals', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'DepthNormalsOnly'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 4: {'pass': 'MotionVectors', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'MOTIONVECTORS'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+
+
+######## Universal Render Pipeline/Lit  [globalgamemanagers.assets] ########
+--- subshader 0: 5 passes
+  pass 0: {'pass': 'ForwardLit', 'cull': 0.0, 'zwrite': 0.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('IGNOREPROJECTOR', 'true'), ('LIGHTMODE', 'UniversalForward'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Lit')]}
+    programs: []
+  pass 1: {'pass': 'ShadowCaster', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('IGNOREPROJECTOR', 'true'), ('LIGHTMODE', 'SHADOWCASTER'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Lit')]}
+    programs: []
+  pass 2: {'pass': 'DepthOnly', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('IGNOREPROJECTOR', 'true'), ('LIGHTMODE', 'DepthOnly'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Lit')]}
+    programs: []
+  pass 3: {'pass': 'DepthNormals', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('IGNOREPROJECTOR', 'true'), ('LIGHTMODE', 'DepthNormals'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Lit')]}
+    programs: []
+  pass 4: {'pass': 'MotionVectors', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('IGNOREPROJECTOR', 'true'), ('LIGHTMODE', 'MOTIONVECTORS'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Lit')]}
+    programs: []
+
+
+######## W/Character  [globalgamemanagers.assets] ########
+--- subshader 0: 5 passes
+  pass 0: {'pass': 'Forward', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'UniversalForwardOnly'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 1: {'pass': 'ShadowCaster', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'SHADOWCASTER'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 2: {'pass': 'DepthOnly', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'DepthOnly'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 3: {'pass': 'DepthNormals', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'DepthNormalsOnly'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 4: {'pass': 'MotionVectors', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'MOTIONVECTORS'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+
+
+######## Tornado  [resources.assets] ########
+--- subshader 0: 5 passes
+  pass 0: {'pass': 'Forward', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'UniversalForwardOnly'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 1: {'pass': 'ShadowCaster', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'SHADOWCASTER'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 2: {'pass': 'DepthOnly', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'DepthOnly'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 3: {'pass': 'DepthNormals', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'DepthNormalsOnly'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 4: {'pass': 'MotionVectors', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'MOTIONVECTORS'), ('QUEUE', 'Geometry'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Opaque'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+
+
+######## Explosion  [resources.assets] ########
+--- subshader 0: 5 passes
+  pass 0: {'pass': 'Forward', 'cull': 2.0, 'zwrite': 0.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'UniversalForwardOnly'), ('QUEUE', 'Transparent'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Transparent'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 1: {'pass': 'ShadowCaster', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'SHADOWCASTER'), ('QUEUE', 'Transparent'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Transparent'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 2: {'pass': 'DepthOnly', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'DepthOnly'), ('QUEUE', 'Transparent'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Transparent'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 3: {'pass': 'DepthNormals', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'DepthNormalsOnly'), ('QUEUE', 'Transparent'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Transparent'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 4: {'pass': 'MotionVectors', 'cull': 2.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'MOTIONVECTORS'), ('QUEUE', 'Transparent'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'Transparent'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+
+
+######## W/Peak_Mirage  [sharedassets4.assets] ########
+--- subshader 0: 5 passes
+  pass 0: {'pass': 'Forward', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'UniversalForwardOnly'), ('QUEUE', 'AlphaTest'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'TransparentCutout'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 1: {'pass': 'ShadowCaster', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'SHADOWCASTER'), ('QUEUE', 'AlphaTest'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'TransparentCutout'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 2: {'pass': 'DepthOnly', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'DepthOnly'), ('QUEUE', 'AlphaTest'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'TransparentCutout'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 3: {'pass': 'DepthNormals', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'DepthNormalsOnly'), ('QUEUE', 'AlphaTest'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'TransparentCutout'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []
+  pass 4: {'pass': 'MotionVectors', 'cull': 0.0, 'zwrite': 1.0, 'ztest': 4.0, 'offsetFactor': 0.0, 'offsetUnits': 0.0, 'tags': [('AlwaysRenderMotionVectors', 'False'), ('LIGHTMODE', 'MOTIONVECTORS'), ('QUEUE', 'AlphaTest'), ('RenderPipeline', 'UniversalPipeline'), ('RenderType', 'TransparentCutout'), ('UniversalMaterialType', 'Unlit')]}
+    programs: []

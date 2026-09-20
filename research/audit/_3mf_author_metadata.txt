@@ -1,0 +1,16 @@
+========================================
+models/zichaoxiong.3mf
+  Designer         = 夜夜椰子冰
+  ProfileUserName  = 夜夜椰子冰
+  Title            = 坐姿自嘲熊（多色一体）
+  License          = Standard Digital File License
+  DesignerUserId   = 2431656860
+  DesignModelId    = CN7f9861bc88d732
+  CreationDate     = 2026-06-25
+========================================
+models/miffy.3mf
+  Designer         = 
+  Title            = 
+  License          = 
+  DesignerUserId   = 2755976439
+  CreationDate     = 2026-01-19

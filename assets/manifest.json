@@ -1,0 +1,49 @@
+{
+  "assets": {
+    "miffy.psmesh": {
+      "mesh_sha256": "912d5e60d2ef4307f9811c73d53c4142a5c68a85ea0c788e3f594f7cdc042a72",
+      "params": {
+        "ao_floor": 0.92,
+        "ao_strength": 0.1,
+        "budget": 32000,
+        "cavity_strength": 0.0,
+        "crease_strength": 0.0,
+        "grip_fraction": 0.22,
+        "grip_inset": 0.04,
+        "keep_detail_faces": 3000,
+        "outline_thickness": 0.0075,
+        "white_boost": 1.0
+      },
+      "params_canonical": "{\"ao_floor\":0.92,\"ao_strength\":0.1,\"budget\":32000,\"cavity_strength\":0.0,\"crease_strength\":0.0,\"filament_overrides\":{},\"grip_fraction\":0.22,\"grip_inset\":0.04,\"keep_detail_faces\":3000,\"outline_thickness\":0.0075,\"white_boost\":1.0}",
+      "shading_png": "miffy_shading.png",
+      "shading_sha256": "d7a6fa3c7e554f8b8f4f8e53bf2972f0f887ca7a42b6a10adc35bd432c55c85e",
+      "source": "models/miffy.3mf",
+      "source_sha256": "9224feecb3f8e2b05a6d610cce1b68bd11e6d895b204a9d1ced264e976532f88"
+    },
+    "zichaoxiong.psmesh": {
+      "mesh_sha256": "6448dacb45d1ee241ea435208259cee77562a9fdbf02d6876be0b35cfa9b0b3a",
+      "params": {
+        "ao_floor": 0.92,
+        "ao_strength": 0.1,
+        "budget": 32000,
+        "cavity_strength": 0.0,
+        "crease_strength": 0.0,
+        "grip_fraction": 0.26,
+        "grip_inset": 0.04,
+        "keep_detail_faces": 3000,
+        "outline_thickness": 0.0075,
+        "white_boost": 1.0
+      },
+      "params_canonical": "{\"ao_floor\":0.92,\"ao_strength\":0.1,\"budget\":32000,\"cavity_strength\":0.0,\"crease_strength\":0.0,\"filament_overrides\":{\"2\":\"#F95D73\"},\"grip_fraction\":0.26,\"grip_inset\":0.04,\"keep_detail_faces\":3000,\"outline_thickness\":0.0075,\"white_boost\":1.0}",
+      "shading_png": "zichaoxiong_shading.png",
+      "shading_sha256": "dd2159bf669ad502f0229cec7c6d130f6965d58cd7f006736118cd7e94e2b04f",
+      "source": "models/zichaoxiong.3mf",
+      "source_sha256": "ca2b992acccb698e752a15e3bf02dfff6a8192ab2ba0e5cfc1ee9cd120080d58"
+    }
+  },
+  "generator": {
+    "build_meshes.py": "5e1ed2e9d2299cabb195081f0177d6454af77365f4c6aa9d57e22a98a5bc0360",
+    "threemf.py": "aa0763ae97f1c0bc9f2ca8e0f98726fbb467714ac0db0c25664bf5db23212274"
+  },
+  "version": 2
+}

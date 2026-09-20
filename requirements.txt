@@ -1,0 +1,15 @@
+# Python dependencies for the asset pipeline (tools/*.py).
+#
+#   python -m pip install -r requirements.txt
+#
+# Versions are pinned to the set the current assets were built and verified with, so a
+# rebuild reproduces the committed .psmesh/.png byte for byte.
+#
+# fast_simplification is optional at import time but NOT optional in practice: without it
+# build_meshes.simplify() cannot decimate, so the .psmesh files come out roughly 16x
+# larger (measured: 220324 faces instead of 13710). build_meshes.py now warns loudly when
+# it is missing instead of silently skipping the decimation.
+numpy==2.4.4
+scipy==1.18.1
+Pillow==12.2.0
+fast_simplification==0.2.0
